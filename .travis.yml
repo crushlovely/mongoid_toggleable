@@ -10,6 +10,6 @@ env:
   - MONGOID_VERSION=3
   - MONGOID_VERSION=4
 
-script: 'bundle exec rake'
+script: 'CODECLIMATE_REPO_TOKEN=7050bed6ce4a3f2e94ea254180fe5b550fba23f010ff569e1dfe8cd30ee847b0 bundle exec rake'
 
 services: mongodb

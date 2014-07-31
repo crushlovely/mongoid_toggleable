@@ -1,5 +1,9 @@
 # Mongoid::Toggleable
 
+[![Build Status](http://img.shields.io/travis/crushlovely/mongoid_toggleable.svg?style=flat)](https://travis-ci.org/crushlovely/mongoid_toggleable)
+[![Code Climate](http://img.shields.io/codeclimate/github/crushlovely/mongoid_toggleable.svg?style=flat)](https://codeclimate.com/github/crushlovely/mongoid_toggleable)
+[![Code Coverage](http://img.shields.io/codeclimate/coverage/github/crushlovely/mongoid_toggleable.svg?style=flat)](https://codeclimate.com/github/crushlovely/mongoid_toggleable)
+
 TBD.
 
 ## Installation

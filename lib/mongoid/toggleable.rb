@@ -8,13 +8,12 @@ module Mongoid
 
     module ClassMethods
       def toggleable(*toggleable_attributes)
-        defaults = { :default => true, :index => true }
+        defaults = { :default => true }
         options = toggleable_attributes.extract_options!.dup
         options = defaults.merge(options)
 
         toggleable_attributes.each do |toggleable_attribute|
           field toggleable_attribute, :type => MongoidToggleable.boolean_type, :default => options[:default]
-          index({ toggleable_attribute => 1 }, { :name => "#{toggleable_attribute}_index" }) if options[:index]
         end
       end
 

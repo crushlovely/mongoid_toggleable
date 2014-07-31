@@ -29,6 +29,7 @@ end
 Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each { |f| require f }
 
 RSpec.configure do |config|
+  config.include Mongoid::Matchers
   config.before(:each) do
     Mongoid.purge!
     Mongoid::IdentityMap.clear if defined?(Mongoid::IdentityMap)

@@ -12,7 +12,7 @@ TBD.
 
 or in your `Gemfile`
 
-```ruby
+``` ruby
 gem 'mongoid_toggleable'
 ```
 
@@ -20,8 +20,51 @@ gem 'mongoid_toggleable'
 
 Make sure you require the library.
 
-```ruby
+``` ruby
 require 'mongoid_toggleable'
+```
+
+This gem follows a similar API to many Mongoid plugins:
+
+``` ruby
+class Widget
+  include Mongoid::Document
+  include Mongoid::Toggleable
+
+  toggleable :visible
+  # toggleable :visible, :default => false
+end
+```
+
+This sets up a boolean field on the model, and also makes the following class and instance methods available:
+
+``` ruby
+widget = Widget.new
+widget.visible
+# => true
+
+# toggle the widget's visibility, but don't persist the change
+widget.toggle(:visible)
+widget.visible
+# => false
+
+# toggle the widget's visibility and persist the change
+widget.toggle!(:visible)
+
+widget1 = Widget.create
+widget2 = Widget.create(:visible => false)
+
+Widget.find_toggleable(:visible, true)
+# => [widget1]
+
+Widget.find_toggleable(:visible, false)
+# => [widget2]
+```
+
+You can chain `find_toggleable` with other scopes too:
+
+``` ruby
+Widget.find_toggleable(:visible, true).where(:created_at.lte => 10.days.ago)
 ```
 
 ## Contributing to mongoid_toggleable

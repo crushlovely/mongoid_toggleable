@@ -11,3 +11,5 @@ env:
   - MONGOID_VERSION=4
 
 script: 'bundle exec rake'
+
+services: mongodb

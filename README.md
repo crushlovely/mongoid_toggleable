@@ -1,5 +1,7 @@
 # Mongoid::Toggleable
 
+[![RubyGem Version](http://img.shields.io/gem/v/mongoid_toggleable.svg?style=flat)](https://rubygems.org/gems/mongoid_toggleable)
+[![Dependency Status](http://img.shields.io/gemnasium/crushlovely/mongoid_toggleable.svg?style=flat)](https://gemnasium.com/crushlovely/mongoid_toggleable)
 [![Build Status](http://img.shields.io/travis/crushlovely/mongoid_toggleable.svg?style=flat)](https://travis-ci.org/crushlovely/mongoid_toggleable)
 [![Code Climate](http://img.shields.io/codeclimate/github/crushlovely/mongoid_toggleable.svg?style=flat)](https://codeclimate.com/github/crushlovely/mongoid_toggleable)
 [![Code Coverage](http://img.shields.io/codeclimate/coverage/github/crushlovely/mongoid_toggleable.svg?style=flat)](https://codeclimate.com/github/crushlovely/mongoid_toggleable)

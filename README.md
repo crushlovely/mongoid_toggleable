@@ -4,7 +4,11 @@
 [![Code Climate](http://img.shields.io/codeclimate/github/crushlovely/mongoid_toggleable.svg?style=flat)](https://codeclimate.com/github/crushlovely/mongoid_toggleable)
 [![Code Coverage](http://img.shields.io/codeclimate/coverage/github/crushlovely/mongoid_toggleable.svg?style=flat)](https://codeclimate.com/github/crushlovely/mongoid_toggleable)
 
-TBD.
+Create toggleable attributes for your Mongoid models.
+
+## Why?
+
+We frequently require the ability to toggle the visibility of content on an application's front-end.
 
 ## Installation
 
@@ -36,7 +40,7 @@ class Widget
 end
 ```
 
-This sets up a boolean field on the model, and also makes the following class and instance methods available:
+This sets up a boolean field on the model, and also makes the following instance methods available:
 
 ``` ruby
 widget = Widget.new
@@ -50,21 +54,56 @@ widget.visible
 
 # toggle the widget's visibility and persist the change
 widget.toggle!(:visible)
+```
+
+### Options
+
+In addition to the name of the attribute to create, you can also pass the following options:
+
+* `:default`: The Boolean default of the attribute. (optional, default: true).
+* `:scope_name`: The Symbol representing the name of the positive scope (optional, default: toggleable_attribute).
+* `:inverse_scope_name`: The Symbol representing the name of the negative scope (optional, default: "not_#{toggleable_attribute}").
+
+### Scopes
+
+Two scopes are automatically created when you define a toggleable attribute:
+
+``` ruby
+class Widget
+  include Mongoid::Document
+  include Mongoid::Toggleable
+
+  toggleable :visible
+end
 
 widget1 = Widget.create
 widget2 = Widget.create(:visible => false)
 
-Widget.find_toggleable(:visible, true)
+Widget.visible
 # => [widget1]
 
-Widget.find_toggleable(:visible, false)
+Widget.not_visible
 # => [widget2]
 ```
 
-You can chain `find_toggleable` with other scopes too:
+These are just plain old Mongoid scopes, so you can chain them together with other scopes as needed:
 
 ``` ruby
-Widget.find_toggleable(:visible, true).where(:created_at.lte => 10.days.ago)
+Widget.visible.where(:created_at.lte => 10.days.ago)
+```
+
+You can also customize the names of the scope created:
+
+``` ruby
+class Widget
+  include Mongoid::Document
+  include Mongoid::Toggleable
+
+  toggleable :published, :inverse_scope_name => :unpublished
+end
+
+Widget.published
+Widget.unpublished
 ```
 
 ## Contributing to mongoid_toggleable

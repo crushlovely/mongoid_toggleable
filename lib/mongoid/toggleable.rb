@@ -14,9 +14,9 @@ module Mongoid
       #           :default             - The Boolean default of the attribute.
       #                                  (optional, default: true).
       #           :scope_name          - The Symbol representing the name of the positive scope
-      #                                  (optional, default: #{toggleable_attribute}.
-      #           :inverse_scope_name  - The Symbol representing the name of the positive scope
-      #                                  (optional, default: #{toggleable_attribute}.
+      #                                  (optional, default: #{toggleable_attribute}).
+      #           :inverse_scope_name  - The Symbol representing the name of the negative scope
+      #                                  (optional, default: #{toggleable_attribute}).
       #
       # Examples:
       #
